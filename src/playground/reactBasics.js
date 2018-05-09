@@ -10,7 +10,7 @@ let templateObj = {
 };
 
 let userObj = {
-    name : "Saudul Islam",
+    name : "Test User",
     age : 26,
     location : "Noida",
     myattribs : ["att1", "att2"]
