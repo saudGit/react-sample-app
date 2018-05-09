@@ -1,0 +1,39 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Islam\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add babel-prset-react@6.24.1 babel-preset-env@1.5.2
+
+PATH: 
+  c:\mingw\bin;C:\oraclexe\app\oracle\product\10.2.0\server\bin;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\Bitvise SSH Client;F:\Rockstar Games\Grand Theft Auto V;F:\gradle-2.11\bin;F:\sonar-scanner-2.6.1\bin;C:\Program Files\nodejs\;C:\Users\Islam\AppData\Roaming\npm
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "indecision-app",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Saudul",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find package "babel-prset-react" on the "npm" registry.
+      at new MessageError (C:\Users\Islam\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
+      at NpmResolver.<anonymous> (C:\Users\Islam\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:51625:15)
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Islam\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
+      at C:\Users\Islam\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
