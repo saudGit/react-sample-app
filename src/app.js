@@ -24,13 +24,15 @@ let divTwoData = {
       id : {
           add : "addButton",
           remove : "removeButton",
-          removeAll : "removeAllButton"
+          removeAll : "removeAllButton",
+          random : "randomButton"
       },
       className : "button",
       buttonLabel : {
           add : "Add Option",
           remove : "Remove Last Option",
-          removeAll : "Remove All Options"
+          removeAll : "Remove All Options",
+          random: "A random Generator"
       }
   }
 };
@@ -68,6 +70,11 @@ const printArray = () =>
     {
         divOneData.userOptions.map(number => <p key={number}>{number}</p>);
     }
+};
+
+const generateRandomNum = () =>
+{
+    console.log("A test message");
 };
 
 
@@ -130,6 +137,18 @@ const renderDivTwo = () =>
                 >
                     {divTwoData.buttonAttribs.buttonLabel.removeAll}
                 </button>
+
+                &nbsp;&nbsp;
+
+                <button
+                    id = {divTwoData.buttonAttribs.id.random}
+                    className = {divTwoData.buttonAttribs.className}
+                    disabled = {divOneData.userOptions.length === 0}
+                    onClick={generateRandomNum}
+                >
+                    {divTwoData.buttonAttribs.buttonLabel.random}
+                </button>
+
             </form>
         </div>
     );
