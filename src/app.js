@@ -88,6 +88,8 @@ const renderDivOne = () =>
         </div>
     );
     ReactDOM.render(divOneObj, firstDiv);
+
+    renderDivTwo();
 };
 
 const renderDivTwo = () =>
@@ -112,6 +114,7 @@ const renderDivTwo = () =>
                 <button
                     id = {divTwoData.buttonAttribs.id.remove}
                     className = {divTwoData.buttonAttribs.className}
+                    disabled = {divOneData.userOptions.length === 0}
                     onClick={removeOption}
                 >
                     {divTwoData.buttonAttribs.buttonLabel.remove}
@@ -122,6 +125,7 @@ const renderDivTwo = () =>
                 <button
                     id = {divTwoData.buttonAttribs.id.removeAll}
                     className = {divTwoData.buttonAttribs.className}
+                    disabled = {divOneData.userOptions.length === 0}
                     onClick={removeAllOptions}
                 >
                     {divTwoData.buttonAttribs.buttonLabel.removeAll}
@@ -133,4 +137,3 @@ const renderDivTwo = () =>
 };
 
 renderDivOne();
-renderDivTwo();
