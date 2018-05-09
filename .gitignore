@@ -58,4 +58,4 @@ typings/
 .env
 
 .idea/
-public/scripts/*.js
+public/scripts/*
