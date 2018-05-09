@@ -74,7 +74,7 @@ const printArray = () =>
 
 const generateRandomNum = () =>
 {
-    console.log("A test message");
+    console.log(Math.random());
 };
 
 
