@@ -2,6 +2,9 @@ console.log("App.js called");
 
 const firstDiv = document.getElementById("div1");
 const secondDiv = document.getElementById("div2");
+const thirdDiv = document.getElementById("div3");
+
+let divVisibility = true;
 
 let divOneData = {
   title : "Indecision App",
@@ -35,6 +38,17 @@ let divTwoData = {
           random: "A random Generator"
       }
   }
+};
+
+let divThreeData = {
+    buttonAttribs: {
+        id : "showhide",
+        className: "button",
+        buttonLabel : {
+            showText : "Show Details",
+            hideText : "Hide Details"
+        }
+    }
 };
 
 const removeOption = () =>
@@ -77,6 +91,13 @@ const generateRandomNum = () =>
     console.log(Math.random());
 };
 
+const showOrHideDivs = () =>
+{
+    divVisibility = !divVisibility;
+    firstDiv.style.display = (divVisibility) ? 'block' : 'none';
+    secondDiv.style.display = (divVisibility) ? 'block' : 'none';
+    renderDivOne();
+};
 
 const renderDivOne = () =>
 {
@@ -97,6 +118,8 @@ const renderDivOne = () =>
     ReactDOM.render(divOneObj, firstDiv);
 
     renderDivTwo();
+    renderDivThree();
+
 };
 
 const renderDivTwo = () =>
@@ -154,5 +177,22 @@ const renderDivTwo = () =>
     );
     ReactDOM.render(divTwoObj, secondDiv);
 };
+
+const renderDivThree = () =>
+{
+    const divThreeObj = (
+        <div>
+            <button
+            id = {divThreeData.buttonAttribs.id}
+            className={divThreeData.buttonAttribs.className}
+            onClick={showOrHideDivs}
+            >
+                {divVisibility ? divThreeData.buttonAttribs.buttonLabel.hideText : divThreeData.buttonAttribs.buttonLabel.showText}
+            </button>
+        </div>
+    );
+    ReactDOM.render(divThreeObj, thirdDiv);
+};
+
 
 renderDivOne();

@@ -4,6 +4,9 @@ console.log("App.js called");
 
 var firstDiv = document.getElementById("div1");
 var secondDiv = document.getElementById("div2");
+var thirdDiv = document.getElementById("div3");
+
+var divVisibility = true;
 
 var divOneData = {
     title: "Indecision App",
@@ -26,13 +29,26 @@ var divTwoData = {
         id: {
             add: "addButton",
             remove: "removeButton",
-            removeAll: "removeAllButton"
+            removeAll: "removeAllButton",
+            random: "randomButton"
         },
         className: "button",
         buttonLabel: {
             add: "Add Option",
             remove: "Remove Last Option",
-            removeAll: "Remove All Options"
+            removeAll: "Remove All Options",
+            random: "A random Generator"
+        }
+    }
+};
+
+var divThreeData = {
+    buttonAttribs: {
+        id: "showhide",
+        className: "button",
+        buttonLabel: {
+            showText: "Show Details",
+            hideText: "Hide Details"
         }
     }
 };
@@ -54,21 +70,32 @@ var formSubmit = function formSubmit(eventCallback) {
     var userVal = eventCallback.target.elements.option.value;
     if (userVal) {
         divOneData.userOptions.push(userVal);
-        console.log(userVal);
-
         eventCallback.target.elements.option.value = null;
         renderDivOne();
     }
 };
 
 var printArray = function printArray() {
-    return divOneData.userOptions.map(function (number) {
-        return React.createElement(
-            "p",
-            null,
-            number
-        );
-    });
+    if (divOneData.userOptions.length > 0) {
+        divOneData.userOptions.map(function (number) {
+            return React.createElement(
+                "p",
+                { key: number },
+                number
+            );
+        });
+    }
+};
+
+var generateRandomNum = function generateRandomNum() {
+    console.log(Math.random());
+};
+
+var showOrHideDivs = function showOrHideDivs() {
+    divVisibility = !divVisibility;
+    firstDiv.style.display = divVisibility ? 'block' : 'none';
+    secondDiv.style.display = divVisibility ? 'block' : 'none';
+    renderDivOne();
 };
 
 var renderDivOne = function renderDivOne() {
@@ -112,6 +139,9 @@ var renderDivOne = function renderDivOne() {
         printArray()
     );
     ReactDOM.render(divOneObj, firstDiv);
+
+    renderDivTwo();
+    renderDivThree();
 };
 
 var renderDivTwo = function renderDivTwo() {
@@ -141,6 +171,7 @@ var renderDivTwo = function renderDivTwo() {
                 {
                     id: divTwoData.buttonAttribs.id.remove,
                     className: divTwoData.buttonAttribs.className,
+                    disabled: divOneData.userOptions.length === 0,
                     onClick: removeOption
                 },
                 divTwoData.buttonAttribs.buttonLabel.remove
@@ -151,14 +182,42 @@ var renderDivTwo = function renderDivTwo() {
                 {
                     id: divTwoData.buttonAttribs.id.removeAll,
                     className: divTwoData.buttonAttribs.className,
+                    disabled: divOneData.userOptions.length === 0,
                     onClick: removeAllOptions
                 },
                 divTwoData.buttonAttribs.buttonLabel.removeAll
+            ),
+            "\xA0\xA0",
+            React.createElement(
+                "button",
+                {
+                    id: divTwoData.buttonAttribs.id.random,
+                    className: divTwoData.buttonAttribs.className,
+                    disabled: divOneData.userOptions.length === 0,
+                    onClick: generateRandomNum
+                },
+                divTwoData.buttonAttribs.buttonLabel.random
             )
         )
     );
     ReactDOM.render(divTwoObj, secondDiv);
 };
 
+var renderDivThree = function renderDivThree() {
+    var divThreeObj = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "button",
+            {
+                id: divThreeData.buttonAttribs.id,
+                className: divThreeData.buttonAttribs.className,
+                onClick: showOrHideDivs
+            },
+            divVisibility ? divThreeData.buttonAttribs.buttonLabel.hideText : divThreeData.buttonAttribs.buttonLabel.showText
+        )
+    );
+    ReactDOM.render(divThreeObj, thirdDiv);
+};
+
 renderDivOne();
-renderDivTwo();
