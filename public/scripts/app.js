@@ -1,223 +1,185 @@
 "use strict";
 
-console.log("App.js called");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var firstDiv = document.getElementById("div1");
-var secondDiv = document.getElementById("div2");
-var thirdDiv = document.getElementById("div3");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var divVisibility = true;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var divOneData = {
-    title: "Indecision App",
-    subtitle: "App Challenge",
-    list: {
-        item1: "Item1",
-        item2: "Item2"
-    },
-    userOptions: []
-};
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var divTwoData = {
-    inputAttribs: {
-        type: "text",
-        id: "input1",
-        name: "option"
-    },
+console.log("First Component");
 
-    buttonAttribs: {
-        id: {
-            add: "addButton",
-            remove: "removeButton",
-            removeAll: "removeAllButton",
-            random: "randomButton"
-        },
-        className: "button",
-        buttonLabel: {
-            add: "Add Option",
-            remove: "Remove Last Option",
-            removeAll: "Remove All Options",
-            random: "A random Generator"
-        }
+var IndecisionApp = function (_React$Component) {
+    _inherits(IndecisionApp, _React$Component);
+
+    function IndecisionApp() {
+        _classCallCheck(this, IndecisionApp);
+
+        return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
     }
-};
 
-var divThreeData = {
-    buttonAttribs: {
-        id: "showhide",
-        className: "button",
-        buttonLabel: {
-            showText: "Show Details",
-            hideText: "Hide Details"
-        }
-    }
-};
-
-var removeOption = function removeOption() {
-    if (divOneData.userOptions.length > 0) {
-        divOneData.userOptions.pop();
-        renderDivOne();
-    }
-};
-
-var removeAllOptions = function removeAllOptions() {
-    divOneData.userOptions = [];
-    renderDivOne();
-};
-
-var formSubmit = function formSubmit(eventCallback) {
-    eventCallback.preventDefault();
-    var userVal = eventCallback.target.elements.option.value;
-    if (userVal) {
-        divOneData.userOptions.push(userVal);
-        eventCallback.target.elements.option.value = null;
-        renderDivOne();
-    }
-};
-
-var printArray = function printArray() {
-    if (divOneData.userOptions.length > 0) {
-        divOneData.userOptions.map(function (number) {
+    _createClass(IndecisionApp, [{
+        key: "render",
+        value: function render() {
             return React.createElement(
-                "p",
-                { key: number },
-                number
+                "div",
+                null,
+                React.createElement(Header, null),
+                React.createElement(Action, null),
+                React.createElement(Options, null),
+                React.createElement(AddOption, null)
             );
-        });
+        }
+    }]);
+
+    return IndecisionApp;
+}(React.Component);
+
+var Header = function (_React$Component2) {
+    _inherits(Header, _React$Component2);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
     }
-};
 
-var generateRandomNum = function generateRandomNum() {
-    console.log(Math.random());
-};
-
-var showOrHideDivs = function showOrHideDivs() {
-    divVisibility = !divVisibility;
-    firstDiv.style.display = divVisibility ? 'block' : 'none';
-    secondDiv.style.display = divVisibility ? 'block' : 'none';
-    renderDivOne();
-};
-
-var renderDivOne = function renderDivOne() {
-    var divOneObj = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            "Title : ",
-            divOneData.title
-        ),
-        React.createElement(
-            "p",
-            null,
-            "Subtitle : ",
-            divOneData.subtitle
-        ),
-        React.createElement(
-            "ol",
-            null,
-            React.createElement(
-                "li",
+    _createClass(Header, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
                 null,
-                "First Item : ",
-                divOneData.list.item1
-            ),
-            React.createElement(
-                "li",
+                React.createElement(
+                    "h2",
+                    null,
+                    "Indecision App."
+                ),
+                React.createElement(
+                    "h3",
+                    null,
+                    "This is a Test App."
+                )
+            );
+        }
+    }]);
+
+    return Header;
+}(React.Component);
+
+var Action = function (_React$Component3) {
+    _inherits(Action, _React$Component3);
+
+    function Action() {
+        _classCallCheck(this, Action);
+
+        return _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).apply(this, arguments));
+    }
+
+    _createClass(Action, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
                 null,
-                "Second Item : ",
-                divOneData.list.item2
-            )
-        ),
-        React.createElement(
-            "p",
-            null,
-            "Total User Options : ",
-            divOneData.userOptions.length
-        ),
-        printArray()
-    );
-    ReactDOM.render(divOneObj, firstDiv);
+                React.createElement(
+                    "button",
+                    null,
+                    "Click Me!"
+                )
+            );
+        }
+    }]);
 
-    renderDivTwo();
-    renderDivThree();
-};
+    return Action;
+}(React.Component);
 
-var renderDivTwo = function renderDivTwo() {
-    var divTwoObj = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "form",
-            { onSubmit: formSubmit },
-            React.createElement("input", {
-                type: divTwoData.inputAttribs.type,
-                id: divTwoData.inputAttribs.id,
-                name: divTwoData.inputAttribs.name }),
-            React.createElement("br", null),
-            React.createElement("br", null),
-            React.createElement(
-                "button",
-                {
-                    id: divTwoData.buttonAttribs.id.add,
-                    className: divTwoData.buttonAttribs.className
-                },
-                divTwoData.buttonAttribs.buttonLabel.add
-            ),
-            "\xA0\xA0",
-            React.createElement(
-                "button",
-                {
-                    id: divTwoData.buttonAttribs.id.remove,
-                    className: divTwoData.buttonAttribs.className,
-                    disabled: divOneData.userOptions.length === 0,
-                    onClick: removeOption
-                },
-                divTwoData.buttonAttribs.buttonLabel.remove
-            ),
-            "\xA0\xA0",
-            React.createElement(
-                "button",
-                {
-                    id: divTwoData.buttonAttribs.id.removeAll,
-                    className: divTwoData.buttonAttribs.className,
-                    disabled: divOneData.userOptions.length === 0,
-                    onClick: removeAllOptions
-                },
-                divTwoData.buttonAttribs.buttonLabel.removeAll
-            ),
-            "\xA0\xA0",
-            React.createElement(
-                "button",
-                {
-                    id: divTwoData.buttonAttribs.id.random,
-                    className: divTwoData.buttonAttribs.className,
-                    disabled: divOneData.userOptions.length === 0,
-                    onClick: generateRandomNum
-                },
-                divTwoData.buttonAttribs.buttonLabel.random
-            )
-        )
-    );
-    ReactDOM.render(divTwoObj, secondDiv);
-};
+var Options = function (_React$Component4) {
+    _inherits(Options, _React$Component4);
 
-var renderDivThree = function renderDivThree() {
-    var divThreeObj = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "button",
-            {
-                id: divThreeData.buttonAttribs.id,
-                className: divThreeData.buttonAttribs.className,
-                onClick: showOrHideDivs
-            },
-            divVisibility ? divThreeData.buttonAttribs.buttonLabel.hideText : divThreeData.buttonAttribs.buttonLabel.showText
-        )
-    );
-    ReactDOM.render(divThreeObj, thirdDiv);
-};
+    function Options() {
+        _classCallCheck(this, Options);
 
-renderDivOne();
+        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    }
+
+    _createClass(Options, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement(
+                    "p",
+                    null,
+                    "All your options are here!"
+                ),
+                React.createElement(OptionItem, null)
+            );
+        }
+    }]);
+
+    return Options;
+}(React.Component);
+
+var OptionItem = function (_React$Component5) {
+    _inherits(OptionItem, _React$Component5);
+
+    function OptionItem() {
+        _classCallCheck(this, OptionItem);
+
+        return _possibleConstructorReturn(this, (OptionItem.__proto__ || Object.getPrototypeOf(OptionItem)).apply(this, arguments));
+    }
+
+    _createClass(OptionItem, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement(
+                    "p",
+                    null,
+                    "Option Name"
+                )
+            );
+        }
+    }]);
+
+    return OptionItem;
+}(React.Component);
+
+var AddOption = function (_React$Component6) {
+    _inherits(AddOption, _React$Component6);
+
+    function AddOption() {
+        _classCallCheck(this, AddOption);
+
+        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+    }
+
+    _createClass(AddOption, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement(
+                    "p",
+                    null,
+                    " Add More OPtions"
+                ),
+                React.createElement(
+                    "button",
+                    null,
+                    "Click to Add Option"
+                )
+            );
+        }
+    }]);
+
+    return AddOption;
+}(React.Component);
+
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById("div1"));
