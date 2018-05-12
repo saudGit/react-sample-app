@@ -22,12 +22,20 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: "render",
         value: function render() {
+            var title = "Indecision App";
+            var subTitle = "Making a test app on React";
+            var options = ['One', 'Two', 'Three'];
             return React.createElement(
                 "div",
                 null,
-                React.createElement(Header, null),
+                React.createElement(Header, {
+                    title: title,
+                    subtitle: subTitle
+                }),
                 React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Options, {
+                    options: options
+                }),
                 React.createElement(AddOption, null)
             );
         }
@@ -54,12 +62,12 @@ var Header = function (_React$Component2) {
                 React.createElement(
                     "h2",
                     null,
-                    "Indecision App."
+                    this.props.title
                 ),
                 React.createElement(
                     "h3",
                     null,
-                    "This is a Test App."
+                    this.props.subtitle
                 )
             );
         }
@@ -113,9 +121,10 @@ var Options = function (_React$Component4) {
                 React.createElement(
                     "p",
                     null,
-                    "All your options are here!"
-                ),
-                React.createElement(OptionItem, null)
+                    this.props.options.map(function (optionItem) {
+                        return React.createElement(OptionItem, { key: optionItem, item: optionItem });
+                    })
+                )
             );
         }
     }]);
@@ -138,11 +147,8 @@ var OptionItem = function (_React$Component5) {
             return React.createElement(
                 "div",
                 null,
-                React.createElement(
-                    "p",
-                    null,
-                    "Option Name"
-                )
+                "Option : ",
+                this.props.item
             );
         }
     }]);
